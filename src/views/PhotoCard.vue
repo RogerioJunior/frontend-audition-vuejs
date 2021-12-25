@@ -1,6 +1,16 @@
 <template>
-  <div class="photo-card">
-    <h1>this is list card</h1>
+ <div id="photo-card">
+  <div id="container-photo-card">
+    <div class="photo-card" v-for="(photo, i) in this.loadPhotos(this.end)" :key="i">
+         <img :src="photo.url">
+         <div class="title">{{photo.title}}</div>
+    </div>
+  </div>
+          <div id="button-container">
+      <button id="button" class="button-more-photos" onclick="loadMorePhotos()">
+        Load more photos
+      </button>
+    </div>
   </div>
 </template>
 
@@ -13,36 +23,25 @@
         },
 
         props: [
-            'allPhotos'
+            'arrayPhotos'
         ],
 
         data () {
             return {
-                form: {
-                    nome: "",
-                    descricao: "",
-                    nota: ""
-                }
+                end: 20
             }
-
-        },
-
-        beforeMount(){
-            if (this.tarefaDto) {
-                this.$set(this.form, 'nome', this.tarefaDto.nome);
-                this.$set(this.form, 'descricao', this.tarefaDto.descricao);
-                this.$set(this.form, 'nota', this.tarefaDto.nota);
-
-            }
-        },
-
-        computed:{
 
         },
 
         methods: {
 
+            loadPhotos(end) {
+                return this.arrayPhotos.slice(0, end);
+            }
+
 
         }
     }
 </script>
+
+<style lang="css" src="../assets/css/photo-card.css"></style>
