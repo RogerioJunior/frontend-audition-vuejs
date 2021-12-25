@@ -1,32 +1,60 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="title">
+      Photo Library
+      <div class="action-container">
+        <input id="search" type="text" placeholder="search" />
+        <router-link to="/photo-card">
+          <button class="btn-list">
+            <i class="fa fa-list fa-2x" aria-hidden="true"></i>
+          </button>
+        </router-link>
+
+        <router-link to="/photo-card">
+          <button class="btn-list"><i class="fa fa-th fa-2x"></i></button>
+        </router-link>
+      </div>
     </div>
-    <router-view/>
+    <div class="title-spacing"></div>
+    <div id="container">
+      <router-view />
+    </div>
+    <div id="button-container">
+      <button id="button" class="button-more-photos" onclick="loadMorePhotos()">
+        Load more photos
+      </button>
+    </div>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import axios from "axios";
 
-#nav {
-  padding: 30px;
-}
+export default {
+  title: "Main",
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  data() {
+    return {
+      photos: [],
+    };
+  },
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  mounted() {
+    this.load();
+  },
+
+  methods: {
+    async load() {
+      this.photos = await axios
+        .get("https://jsonplaceholder.typicode.com/photos")
+        .then((response) => response.data.slice(0, 500))
+        .catch((error) => {
+          alert(error);
+        });
+    },
+  },
+};
+</script>
+
+
+<style lang="css" src="./assets/css/app.css"></style>
