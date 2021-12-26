@@ -9,8 +9,7 @@
             <i class="fa fa-th fa-2x" aria-hidden="true"></i>
           </button>
         </router-link>
-
-        <router-link to="/photo-card">
+        <router-link :to="{name: 'PhotoList', params: {arrayPhotos: photos}}">
           <button class="btn-list">
             <i class="fa fa-list fa-2x"></i></button>
         </router-link>
