@@ -4,7 +4,7 @@
       <ul v-for="(photo, i) in this.loadPhotos(this.end)" :key="i">
           <li><img :src="photo.thumbnailUrl"></li>
           <li>Id: {{photo.id}}</li>
-          <li> Titulo: {{photo.title}}</li>
+          <li>Titulo: {{photo.title}}</li>
     </ul>
   </div>
           <div id="button-container">

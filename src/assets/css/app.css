@@ -45,10 +45,6 @@
   
   .btn-list:hover {
     cursor: pointer;
-    background: #666;
-  }
-  
-  .btn-list:checked {
     background: #9AD284;
   }
 
