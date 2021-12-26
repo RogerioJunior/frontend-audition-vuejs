@@ -7,7 +7,7 @@
     </div>
   </div>
           <div id="button-container">
-      <button id="button" class="button-more-photos" onclick="loadMorePhotos()">
+      <button id="button" class="button-more-photos" @click="loadMorePhotos()">
         Load more photos
       </button>
     </div>
@@ -37,6 +37,12 @@
 
             loadPhotos(end) {
                 return this.arrayPhotos.slice(0, end);
+            },
+
+            loadMorePhotos() {
+                this.$nextTick(() => {
+                    this.$set(this, 'end', this.end + 10)
+                });
             }
 
 
