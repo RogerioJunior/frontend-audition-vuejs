@@ -26,19 +26,3 @@ ul {
     margin: 5px;
     list-style-type: none;
   }
-  
-  #button-container {
-    min-height: 100px;
-    display: flex;
-    align-items: flex-end;
-  }
-  
-  .button-more-photos {
-    width: 100%;
-    background: darkgreen;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    cursor: pointer;
-    font-size: 20px;
-  }

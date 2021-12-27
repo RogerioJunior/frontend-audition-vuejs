@@ -48,6 +48,10 @@
     background: #9AD284;
   }
 
+ .is-active {
+    background: #9AD284;
+  }
+
   .fa {
     color : #808080;
   }

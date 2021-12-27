@@ -7,14 +7,22 @@
         <router-link
           :to="{ name: 'PhotoCard', params: { arrayPhotos: photos } }"
         >
-          <button class="btn-card" @click="currentRoute = 'PhotoCard', setBtnCard('PhotoCard')">
+          <button
+            class="btn-card"
+            :class="{ 'is-active': btnCard }"
+            @click="(currentRoute = 'PhotoCard'), setBtnCard('PhotoCard')"
+          >
             <i class="fa fa-th fa-2x" aria-hidden="true"></i>
           </button>
         </router-link>
         <router-link
           :to="{ name: 'PhotoList', params: { arrayPhotos: photos } }"
         >
-          <button class="btn-list" @click="currentRoute = 'PhotoList', setBtnList('PhotoList')">
+          <button
+            class="btn-list"
+            :class="{ 'is-active': btnList }"
+            @click="(currentRoute = 'PhotoList'), setBtnList('PhotoList')"
+          >
             <i class="fa fa-list fa-2x"></i>
           </button>
         </router-link>
@@ -38,6 +46,8 @@ export default {
       photosFilter: [],
       search: "",
       currentRoute: "",
+      btnCard: false,
+      btnList: false,
     };
   },
 
@@ -81,17 +91,21 @@ export default {
       console.log(this.photosFilter);
     },
 
-      setBtnCard (route) {
+    setBtnCard(route) {
       if (route != this.$router.history.current.name) {
         this.$set(this, "search", "");
+        this.$set(this, "btnCard", true);
+        this.$set(this, "btnList", false);
       }
-  },
+    },
 
-        setBtnList (route) {
+    setBtnList(route) {
       if (route != this.$router.history.current.name) {
         this.$set(this, "search", "");
+        this.$set(this, "btnCard", false);
+        this.$set(this, "btnList", true);
       }
-  }
+    },
   },
 };
 </script>
