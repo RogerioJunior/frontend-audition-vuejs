@@ -36,14 +36,14 @@
     width: 542px;
   }
   
-  .btn-list {
+  .btn-list, .btn-card {
     display: inline-block;
     width: 34px;
     height: 34px;
     margin-left: 5px;
   }
   
-  .btn-list:hover {
+  .btn-list:hover, .btn-card:hover {
     cursor: pointer;
     background: #9AD284;
   }
